@@ -5,8 +5,6 @@ import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import QueryProvider from "./providers/QueryProvider.tsx";
-// import dotenv from "dotenv";
-// dotenv.config();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

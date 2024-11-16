@@ -4,7 +4,6 @@ import { TLoginForm } from "@/schemas/login.schema";
 import { TRegisterForm } from "@/schemas/register.schema";
 import { useAuthState } from "@/store/refreshToken";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
 
 //register useMutation
 export function useRegisterMutation() {

@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/table";
 
 import { Trash2, Menu } from "lucide-react";
-import { useLocation } from "react-router-dom";
 import AddCandidate from "@/components/candidate/AddCandidate";
 import {
   useDeleteCandidateMutation,
@@ -43,7 +42,7 @@ type TCandidate = {
 
 export default function Candidates() {
   //get all candidates
-  const { data: allCandidates, isLoading, error } = useGetCandidatesQuery();
+  const { data: allCandidates, isLoading } = useGetCandidatesQuery();
 
   //DELETE CANDIDATE
   const { mutateAsync } = useDeleteCandidateMutation();
@@ -51,8 +50,6 @@ export default function Candidates() {
   //TO BE EDITED CANDIDATE
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const location = useLocation();
 
   async function deleteCandidate({
     id,
@@ -62,7 +59,7 @@ export default function Candidates() {
     publicId: string;
   }) {
     mutateAsync({ id, publicId })
-      .then((res) => {
+      .then(() => {
         toast.success("Deleted Successfully!");
       })
       .catch((err) => {

@@ -1,7 +1,5 @@
 "use client";
 
-import { useLocation } from "react-router-dom";
-
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   BarChart,
@@ -72,7 +70,7 @@ const candidates = [
 ];
 
 export default function Admin() {
-  const location = useLocation();
+  // const location = useLocation();
   return (
     <div className="">
       {/* Main Content */}

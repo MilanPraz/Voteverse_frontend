@@ -27,7 +27,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import Logout from "@/components/common/Logout";
 import axios from "axios";
-import { useUserInfo } from "@/store/userDetail";
 import { Link } from "react-router-dom";
 import {
   useGetCandidatesQuery,
@@ -47,12 +46,12 @@ type TCandidate = {
 
 export default function Home() {
   const { mutateAsync } = useVoteCandidateMutation();
-  const userInfo = useUserInfo((state) => state.userInfo);
-  const { data: allCandidates, isLoading, error } = useGetCandidatesQuery();
+  // const userInfo = useUserInfo((state) => state.userInfo);
+  const { data: allCandidates, isLoading } = useGetCandidatesQuery();
 
   const handleVote = async (candidateId: string) => {
     mutateAsync(candidateId)
-      .then((res) => {
+      .then(() => {
         toast.success("Voted!");
       })
       .catch((err) => {

@@ -18,7 +18,7 @@ export default function ProtectedRoute({
     const validateToken = async () => {
       try {
         // Make an API call to validate the token
-        const res = await axiosInstance.get("/user/validate/accessToken", {
+        await axiosInstance.get("/user/validate/accessToken", {
           headers: { Authorization: `Bearer ${accessToken}` },
           withCredentials: true,
         });

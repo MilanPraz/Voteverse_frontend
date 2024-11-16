@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 import {
   Dialog,
@@ -31,7 +31,6 @@ export default function AddCandidate() {
     trigger,
     setValue,
     formState: { errors },
-    getValues,
   } = useForm<TAddCandidate>({
     resolver: zodResolver(AddCandidateSchema),
   });
@@ -62,7 +61,7 @@ export default function AddCandidate() {
       fd.append("pic", imgFile);
 
       mutateAsync(fd)
-        .then(async (res) => {
+        .then(async () => {
           toast.success("Candidate Added!");
           setOpen(false);
         })

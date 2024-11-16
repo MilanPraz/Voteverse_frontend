@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function PageLoader() {
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-teal-400/90 via-emerald-400/90 to-cyan-400/90 backdrop-blur-sm">

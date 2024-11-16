@@ -15,13 +15,12 @@ import { loginSchema, TLoginForm } from "@/schemas/login.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginMutation } from "@/hooks/user.hooks";
 import toast from "react-hot-toast";
-import { useAuthState } from "@/store/refreshToken";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const { mutateAsync, isPending } = useLoginMutation();
   const navigate = useNavigate();
-  const accessToken = useAuthState((state) => state.accessToken);
+  // const accessToken = useAuthState((state) => state.accessToken);
 
   const {
     register,
@@ -33,7 +32,7 @@ export default function Login() {
 
   const onSubmit = async (data: TLoginForm) => {
     mutateAsync(data)
-      .then(async (res) => {
+      .then(async () => {
         navigate("/home");
         toast.success("Login Successful");
       })

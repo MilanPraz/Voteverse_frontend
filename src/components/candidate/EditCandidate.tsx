@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 import {
   Dialog,
@@ -15,7 +15,6 @@ import FormSubmitBtn from "../common/FormSubmitBtn";
 import { useForm } from "react-hook-form";
 import {
   EditCandidateSchema,
-  TAddCandidate,
   TEditCandidate,
 } from "@/schemas/candidate.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -70,7 +69,7 @@ export default function EditCandidate({ candidate }: { candidate: any }) {
       fd.append("pic", imgFile);
 
       mutateAsync({ payload: fd, id: candidate._id })
-        .then(async (res) => {
+        .then(async () => {
           toast.success("Candidate Updated!");
           setOpen(false);
         })
@@ -84,7 +83,7 @@ export default function EditCandidate({ candidate }: { candidate: any }) {
       fd.append("party", data.party);
 
       mutateAsync({ payload: fd, id: candidate._id })
-        .then(async (res) => {
+        .then(async () => {
           toast.success("Candidate Updated!");
           setOpen(false);
         })

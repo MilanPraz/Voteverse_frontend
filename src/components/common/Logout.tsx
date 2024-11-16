@@ -14,6 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import toast from "react-hot-toast";
 
 export default function Logout() {
   const { mutateAsync } = useLogoutUser();
@@ -22,10 +23,11 @@ export default function Logout() {
     Cookies.set("refreshToken", "", { expires: new Date(0) });
     // Cookies.remove("refreshToken");
     mutateAsync()
-      .then((res) => {
+      .then(() => {
+        toast.success("Logout Successfully");
         // console.log("LOGOUT RES:", res);
       })
-      .catch((err) => {
+      .catch(() => {
         // console.log("LOGOUT ERR:", err);
       });
     logout();

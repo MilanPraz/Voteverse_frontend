@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Card,
   CardHeader,
@@ -43,7 +42,7 @@ export default function Register() {
   const { mutateAsync, isPending } = useRegisterMutation();
 
   const onSubmit = (data: TRegisterForm) => {
-    const promise = mutateAsync(data)
+    mutateAsync(data)
       .then(() => {
         toast.success("Registered Successfully");
         navigate("/login");

@@ -38,7 +38,7 @@ export default function Profile() {
 
   async function onSubmit(data: TChangePasswordSchema) {
     mutateAsync(data)
-      .then((res) => {
+      .then(() => {
         toast.success("Password has been Changed!");
         navigate("/home");
       })
