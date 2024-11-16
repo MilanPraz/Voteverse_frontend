@@ -16,8 +16,6 @@ export default function AdminRoute({
 }: {
   children: ReactNode;
 }): JSX.Element {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const accessToken = useAuthState((state) => state.accessToken);
   const userDetail = useUserInfo((state) => state.userInfo);
 
@@ -50,11 +48,7 @@ export default function AdminRoute({
   return (
     <div className=" flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <aside
-        className={`bg-white w-64 min-h-screen p-4 ${
-          isMenuOpen ? "block" : "hidden"
-        } md:block`}
-      >
+      <aside className={`bg-white w-64 min-h-screen p-4 block`}>
         <nav className=" flex flex-col justify-between  h-full">
           <ul className="space-y-2">
             {sidebarLinks.map((link) => (

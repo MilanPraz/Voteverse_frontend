@@ -31,7 +31,7 @@ export default function PageLoader() {
         <div className="h-full bg-white/80 rounded-full animate-[progressBar_2s_ease-in-out_infinite]" />
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes progressBar {
           0% {
             width: 0%;

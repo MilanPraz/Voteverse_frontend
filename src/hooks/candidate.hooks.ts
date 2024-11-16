@@ -1,6 +1,5 @@
 import { axiosInstance } from "@/libs/axios";
 import { handleAxiosError } from "@/libs/error";
-import { TAddCandidate, TEditCandidate } from "@/schemas/candidate.schema";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export function useGetCandidatesQuery() {
