@@ -1,6 +1,8 @@
 "use client";
 
+import PageLoader from "@/components/common/PageLoader";
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useGetCandidatesQuery } from "@/hooks/candidate.hooks";
 import {
   BarChart,
   Bar,
@@ -10,66 +12,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const candidates = [
-  {
-    id: 1,
-    name: "Jane Smith",
-    party: "Progressive Party",
-    description: "Education reform advocate with 15 years experience.",
-    voteCount: 1234,
-  },
-  {
-    id: 2,
-    name: "John Doe",
-    party: "Citizens Alliance",
-    description: "Local business leader focused on economic growth.",
-    voteCount: 1122,
-  },
-  {
-    id: 3,
-    name: "Sarah Johnson",
-    party: "Unity Coalition",
-    description: "Healthcare policy expert and community organizer.",
-    voteCount: 897,
-  },
-  {
-    id: 4,
-    name: "Michael Chen",
-    party: "Future Forward",
-    description: "Tech innovator championing digital transformation.",
-    voteCount: 756,
-  },
-  {
-    id: 5,
-    name: "Emma Wilson",
-    party: "Green Alliance",
-    description: "Environmental scientist and sustainability advocate.",
-    voteCount: 689,
-  },
-  {
-    id: 6,
-    name: "Robert Taylor",
-    party: "Community First",
-    description: "Urban planning expert and social justice advocate.",
-    voteCount: 542,
-  },
-  {
-    id: 7,
-    name: "Maria Garcia",
-    party: "People's Voice",
-    description: "Civil rights attorney and education reformer.",
-    voteCount: 478,
-  },
-  {
-    id: 8,
-    name: "David Park",
-    party: "Innovation League",
-    description: "Research scientist and technology policy expert.",
-    voteCount: 365,
-  },
-];
-
 export default function Admin() {
+  const { data: allCandidates, isLoading } = useGetCandidatesQuery();
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
   // const location = useLocation();
   return (
     <div className="">
@@ -92,8 +40,8 @@ export default function Admin() {
             <div>
               <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={candidates}>
-                    <XAxis dataKey="name" tick={{ fill: "white" }} />
+                  <BarChart data={allCandidates?.data.data}>
+                    <XAxis dataKey="fullname" tick={{ fill: "white" }} />
                     <YAxis tick={{ fill: "white" }} />
                     <Tooltip
                       contentStyle={{
