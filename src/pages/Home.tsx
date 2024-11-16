@@ -48,20 +48,14 @@ type TCandidate = {
 export default function Home() {
   const { mutateAsync } = useVoteCandidateMutation();
   const userInfo = useUserInfo((state) => state.userInfo);
-  console.log("Home ma info::", userInfo);
   const { data: allCandidates, isLoading, error } = useGetCandidatesQuery();
 
-  console.log("CANDIDATES:", allCandidates);
-
   const handleVote = async (candidateId: string) => {
-    console.log(`Voted for candidate ${candidateId}`);
     mutateAsync(candidateId)
       .then((res) => {
-        console.log("VOTE RES:", res);
         toast.success("Voted!");
       })
       .catch((err) => {
-        console.log("VOTE ERROR:", err);
         toast.error(err.message);
       });
   };

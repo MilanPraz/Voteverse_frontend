@@ -9,4 +9,10 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // define: {
+  //   //env
+  //   "process.env.VITE_BACKEND_URL": JSON.stringify(
+  //     process.env.VITE_BACKEND_URL
+  //   ),
+  // },
 });

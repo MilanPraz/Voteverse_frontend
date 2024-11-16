@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 
 export function handleAxiosError(err: unknown): string {
-  console.log("AXIOS KO ERROR:", err);
+  // console.log("AXIOS KO ERROR:", err);
 
   if (err instanceof AxiosError) {
     return err.response?.data?.message || "An unexpected error occurred";

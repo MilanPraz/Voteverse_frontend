@@ -37,16 +37,12 @@ export default function Profile() {
   const { mutateAsync, isPending } = useChangePasswordMutation();
 
   async function onSubmit(data: TChangePasswordSchema) {
-    console.log("FORMDATA:", data);
-
     mutateAsync(data)
       .then((res) => {
-        console.log("RES:", res);
         toast.success("Password has been Changed!");
         navigate("/home");
       })
       .catch((err) => {
-        console.log("ERR:", err);
         toast.error(err.message);
       });
   }

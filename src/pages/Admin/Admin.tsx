@@ -73,8 +73,6 @@ const candidates = [
 
 export default function Admin() {
   const location = useLocation();
-  console.log("locationL:", location);
-
   return (
     <div className="">
       {/* Main Content */}

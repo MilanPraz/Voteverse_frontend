@@ -63,11 +63,7 @@ export default function EditCandidate({ candidate }: { candidate: any }) {
   const onSubmit = async (data: TEditCandidate) => {
     // IF USER CHANGES THE PICTURE
     if (imgFile) {
-      console.log("IMAGE CHANGE");
-
       const fd = new FormData();
-      console.log("IMAGE UPLOAD VO:", imgFile);
-
       fd.append("fullname", data.fullname);
       fd.append("age", data.age);
       fd.append("party", data.party);
@@ -75,32 +71,24 @@ export default function EditCandidate({ candidate }: { candidate: any }) {
 
       mutateAsync({ payload: fd, id: candidate._id })
         .then(async (res) => {
-          console.log("REs k xa EDIT ko with pic change :", res);
           toast.success("Candidate Updated!");
           setOpen(false);
         })
         .catch((err) => {
-          console.log(" ERRORR:", err);
           toast.error(err.message);
         });
     } else {
-      console.log("IMAG notE CHANGE");
-
       const fd = new FormData();
-      console.log("IMAGE UPLOAD VO:", imgFile);
-
       fd.append("fullname", data.fullname);
       fd.append("age", data.age);
       fd.append("party", data.party);
 
       mutateAsync({ payload: fd, id: candidate._id })
         .then(async (res) => {
-          console.log("REs k xa EDIT without pic chnage ko :", res);
           toast.success("Candidate Updated!");
           setOpen(false);
         })
         .catch((err) => {
-          console.log(" ERRORR:", err);
           toast.error(err.message);
         });
     }

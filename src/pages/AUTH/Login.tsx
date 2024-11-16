@@ -22,7 +22,6 @@ export default function Login() {
   const { mutateAsync, isPending } = useLoginMutation();
   const navigate = useNavigate();
   const accessToken = useAuthState((state) => state.accessToken);
-  console.log("refresh token xa?", accessToken);
 
   const {
     register,
@@ -33,16 +32,12 @@ export default function Login() {
   });
 
   const onSubmit = async (data: TLoginForm) => {
-    console.log("Login attempted with:", data);
-
     mutateAsync(data)
       .then(async (res) => {
-        console.log("REs k xa LOGIN :", res);
         navigate("/home");
         toast.success("Login Successful");
       })
       .catch((err) => {
-        console.log("LOGIN ERRORR:", err);
         toast.error(err.message);
       });
 

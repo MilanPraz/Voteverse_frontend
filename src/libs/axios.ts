@@ -1,8 +1,9 @@
 import { useAuthState } from "@/store/refreshToken";
 import axios from "axios";
 
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:8000/v1",
+  baseURL: baseUrl,
   timeout: 10000, //10 sec
   headers: {
     "Content-Type": "application/json",

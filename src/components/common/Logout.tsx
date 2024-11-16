@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "../ui/button";
 import { LogOut } from "lucide-react";
 import Cookies from "js-cookie";
@@ -24,10 +23,10 @@ export default function Logout() {
     // Cookies.remove("refreshToken");
     mutateAsync()
       .then((res) => {
-        console.log("LOGOUT RES:", res);
+        // console.log("LOGOUT RES:", res);
       })
       .catch((err) => {
-        console.log("LOGOUT ERR:", err);
+        // console.log("LOGOUT ERR:", err);
       });
     logout();
   }

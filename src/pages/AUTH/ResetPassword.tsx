@@ -35,18 +35,14 @@ export default function ResetPassword() {
   const { mutateAsync, isPending } = useResetPasswordMutation();
 
   async function onSubmit(data: TResetPasswordSchema) {
-    console.log("FORMDATA:", data);
-
     mutateAsync(data)
       .then((res) => {
-        console.log("RES:", res);
         navigate("/login");
         toast.success(
           res?.data.message || "Check your mail for verification code"
         );
       })
       .catch((err) => {
-        console.log("ERR:", err);
         toast.error(err.message);
       });
   }

@@ -36,18 +36,14 @@ export default function ForgotPassword() {
   const { mutateAsync, isPending } = useForgotPasswordMutation();
 
   function onSubmit(data: TForgotPasswordSchema) {
-    console.log("formdata:", data);
-
     mutateAsync(data)
       .then(async (res) => {
-        console.log("RESSSS:", res);
         navigate("/reset-password");
         toast.success(
           res?.data.message || "Check your mail for verification code"
         );
       })
       .catch((err) => {
-        console.log("ERR:", err);
         toast.error(err.message);
       });
   }

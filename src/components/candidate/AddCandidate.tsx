@@ -43,45 +43,30 @@ export default function AddCandidate() {
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
 
-    // const file = e.target.files?.[0];
-
-    console.log("FILE TREIGGERE");
-
-    console.log("FORMERRRORSSSS:", errors);
-
     if (e.target.files) {
       const file = e.target.files[0];
       setValue("pic", file);
       trigger("pic");
-      console.log("FILE TREIGGERE INSIDE");
       const imageURL = URL.createObjectURL(file);
       setImgFile(file);
       setImageLink(imageURL);
-      console.log("PICCCCC:", getValues("pic"));
     }
   };
 
   const onSubmit = async (data: TAddCandidate) => {
-    console.log("Login attempted with:", data);
-    console.log("IMAGE FILE:", imgFile);
-
     const fd = new FormData();
     if (imgFile) {
       fd.append("fullname", data.fullname);
       fd.append("age", data.age);
       fd.append("party", data.party);
       fd.append("pic", imgFile);
-      console.log(fd);
-      // console.log({ ...fd });
 
       mutateAsync(fd)
         .then(async (res) => {
-          console.log("REs k xa candidate add ko :", res);
           toast.success("Candidate Added!");
           setOpen(false);
         })
         .catch((err) => {
-          console.log("LOGIN ERRORR:", err);
           toast.error(err.message);
         });
     }

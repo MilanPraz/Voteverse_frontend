@@ -49,13 +49,10 @@ export default function Candidates() {
   const { mutateAsync } = useDeleteCandidateMutation();
 
   //TO BE EDITED CANDIDATE
-  console.log("candidatesssss:", allCandidates);
-  console.log("Errors:", error);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const location = useLocation();
-  console.log("locationL:", location);
 
   async function deleteCandidate({
     id,
@@ -64,15 +61,11 @@ export default function Candidates() {
     id: string;
     publicId: string;
   }) {
-    console.log("PUBLIC ID HAI:", publicId);
-
     mutateAsync({ id, publicId })
       .then((res) => {
-        console.log("Delete res:", res);
         toast.success("Deleted Successfully!");
       })
       .catch((err) => {
-        console.log("Err:", err);
         toast.error(err.message);
       });
   }

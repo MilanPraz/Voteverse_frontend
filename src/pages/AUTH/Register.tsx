@@ -43,7 +43,6 @@ export default function Register() {
   const { mutateAsync, isPending } = useRegisterMutation();
 
   const onSubmit = (data: TRegisterForm) => {
-    console.log("Registration attempted with:", data);
     const promise = mutateAsync(data)
       .then(() => {
         toast.success("Registered Successfully");
@@ -51,9 +50,7 @@ export default function Register() {
       })
       .catch((err) => {
         toast.error(err.message);
-        console.log("FORM ERROR:", err);
       });
-    console.log(promise);
 
     // Here you would typically handle the registration logic
   };

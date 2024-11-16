@@ -43,17 +43,11 @@ function App() {
           }
         );
         if (res.data) {
-          console.log("RES mA TOKEN XA::", res.data?.data?.token);
-
           setAccessToken(res.data?.data?.token); // Update the state with new access token
         }
-
-        console.log("res k xaaaa acccess token verify app jsx:", res);
         setUserInfo(res.data?.data?.user);
         setIsValidToken(true); // Token is valid
       } catch (error) {
-        console.log("errorrrrrr of access token verify:", error);
-
         setIsValidToken(false); // Token is invalid
         Cookies.remove("token"); // Clear invalid token
       }
@@ -61,17 +55,9 @@ function App() {
 
     validateToken();
   }, [accessToken]);
-  console.log("VALID ACCESS TOKEN:", isValidToken);
-
-  console.log("ACCESS TOKEN APP JSX:", accessToken);
   if (isValidToken === null) {
     return <PageLoader />; // Or a spinner/loading component
   }
-  // if (!isValidToken) {
-  //   console.log("not validdddd");
-
-  //   return <Navigate to="/" replace />;
-  // }
 
   return (
     <>
